@@ -36,6 +36,8 @@ body{height:100vh;background:#0b0c10;background-image:radial-gradient(ellipse at
 <div id="menu"></div>
 
 <script>
+const ventanasAbiertas = [];
+
 const juegos = [
   {id:'geometrydash',n:'Geometry Dash',c:'#00ff64',l:'GD'},
   {id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
@@ -103,6 +105,7 @@ juegos.forEach(j => {
 
 menu.innerHTML += `
   <div class="divider"></div>
+  <div class="mi" onclick="limpiezaTotal()">Limpieza Rapida</div>
   <div class="mi" onclick="location.reload()">Reiniciar</div>
   <div class="mi" onclick="window.close()">Apagar</div>
 `;
@@ -132,6 +135,7 @@ function abrir(id, title) {
       s.style.display = 'none';
       const g = window.open('about:blank', '_blank');
       if (g) {
+        ventanasAbiertas.push(g);
         g.document.write(html);
         g.document.close();
       } else {
@@ -144,6 +148,21 @@ function abrir(id, title) {
       s.textContent = 'root@kali:~# error: ' + title;
       setTimeout(() => s.style.display = 'none', 2200);
     });
+}
+
+function limpiezaTotal() {
+  // Cerrar todas las pestañas de juegos
+  ventanasAbiertas.forEach(v => {
+    try { if (v && !v.closed) v.close(); } catch(e) {}
+  });
+  ventanasAbiertas.length = 0;
+
+  // Limpiar storage
+  try { localStorage.clear(); } catch(e) {}
+  try { sessionStorage.clear(); } catch(e) {}
+
+  // Redirigir a Classroom
+  window.location.href = 'https://classroom.google.com';
 }
 </script>
 </body>
