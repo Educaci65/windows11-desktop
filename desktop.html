@@ -3,27 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windows 11</title>
+<title>Windows 11 RGB</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;user-select:none}
-body{height:100vh;background:linear-gradient(145deg,#0f172a 0%,#1e293b 40%,#0f3460 100%);font-family:'Segoe UI',system-ui,sans-serif;display:flex;flex-direction:column;color:#fff;overflow:hidden}
-#desktop{flex:1;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,100px);grid-auto-rows:110px;gap:14px;align-content:start}
-.sc{width:100px;text-align:center;cursor:pointer;padding:10px 6px;border-radius:10px;transition:background .15s}
-.sc:hover{background:rgba(255,255,255,.13)}
-.ic{width:52px;height:52px;margin:0 auto 8px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.1)}
-.lb{font-size:12px;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.8);line-height:1.25}
-#bar{height:52px;background:rgba(20,20,20,.88);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-top:1px solid rgba(255,255,255,.08);z-index:100}
-#startBtn{height:38px;padding:0 16px;background:rgba(255,255,255,.1);border:none;border-radius:8px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px}
-#startBtn:hover{background:rgba(255,255,255,.18)}
-#clock{font-size:13px;padding:6px 12px;border-radius:6px}
-#clock:hover{background:rgba(255,255,255,.08)}
-#status{position:absolute;bottom:66px;left:18px;background:rgba(0,0,0,.85);color:#4ade80;padding:9px 14px;font-size:12px;font-family:Consolas,monospace;border-radius:8px;display:none;z-index:999}
-#menu{position:absolute;bottom:60px;left:14px;width:290px;background:rgba(25,25,25,.96);backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,.1);border-radius:14px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 16px 48px rgba(0,0,0,.5)}
-.mi{padding:11px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:12px;color:#eee}
-.mi:hover{background:rgba(255,255,255,.1)}
-.mi i{width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
-.divider{height:1px;background:rgba(255,255,255,.1);margin:6px 0}
-#credit{position:absolute;bottom:62px;right:16px;font-size:11px;color:rgba(255,255,255,.4);pointer-events:none}
+body{height:100vh;background:#0a0a12;background-image:radial-gradient(ellipse at 20% 50%,rgba(0,255,255,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,0,255,.08) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(0,100,255,.06) 0%,transparent 50%);font-family:'Segoe UI',system-ui,sans-serif;display:flex;flex-direction:column;color:#fff;overflow:hidden}
+#desktop{flex:1;padding:18px;display:grid;grid-template-columns:repeat(auto-fill,100px);grid-auto-rows:108px;gap:12px;align-content:start}
+.sc{width:100px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:12px;transition:all .15s}
+.sc:hover{background:rgba(0,255,255,.08);box-shadow:0 0 20px rgba(0,255,255,.15)}
+.ic{width:54px;height:54px;margin:0 auto 7px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;box-shadow:0 0 12px rgba(0,0,0,.6),0 0 8px currentColor;border:1px solid rgba(255,255,255,.15)}
+.lb{font-size:12px;font-weight:500;text-shadow:0 0 8px rgba(0,0,0,.9);line-height:1.2}
+#bar{height:50px;background:rgba(10,10,18,.92);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-top:1px solid rgba(0,255,255,.15);box-shadow:0 -4px 30px rgba(0,255,255,.08)}
+#startBtn{height:36px;padding:0 16px;background:linear-gradient(135deg,rgba(0,255,255,.15),rgba(255,0,255,.15));border:1px solid rgba(0,255,255,.3);border-radius:8px;color:#fff;font-weight:600;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px}
+#startBtn:hover{background:linear-gradient(135deg,rgba(0,255,255,.25),rgba(255,0,255,.25));box-shadow:0 0 15px rgba(0,255,255,.3)}
+#clock{font-size:13px;padding:6px 12px;border-radius:6px;color:#0ff}
+#status{position:absolute;bottom:64px;left:16px;background:rgba(0,0,0,.9);color:#0f0;padding:8px 14px;font-size:12px;font-family:Consolas,monospace;border-radius:8px;border:1px solid #0f0;display:none;z-index:999;box-shadow:0 0 15px rgba(0,255,0,.3)}
+#menu{position:absolute;bottom:58px;left:12px;width:300px;background:rgba(12,12,20,.96);backdrop-filter:blur(30px);border:1px solid rgba(0,255,255,.2);border-radius:14px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 0 40px rgba(0,255,255,.15)}
+.mi{padding:10px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:12px;color:#eee;transition:background .1s}
+.mi:hover{background:rgba(0,255,255,.1)}
+.mi i{width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;box-shadow:0 0 8px currentColor}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,255,.3),transparent);margin:6px 0}
+#credit{position:absolute;bottom:60px;right:16px;font-size:11px;color:rgba(0,255,255,.4);text-shadow:0 0 10px rgba(0,255,255,.3);pointer-events:none}
 </style>
 </head>
 <body>
@@ -38,48 +37,52 @@ body{height:100vh;background:linear-gradient(145deg,#0f172a 0%,#1e293b 40%,#0f34
 
 <script>
 const juegos = [
-  {id:'geometrydash', n:'Geometry Dash', c:'#111827', l:'GD'},
-  {id:'amongus', n:'Among Us', c:'#dc2626', l:'AU'},
-  {id:'motox3m', n:'Moto X3M', c:'#ea580c', l:'MX'},
-  {id:'angrybirds', n:'Angry Birds', c:'#ef4444', l:'AB'},
-  {id:'fruitninja', n:'Fruit Ninja', c:'#16a34a', l:'FN'},
-  {id:'cl2doom', n:'Doom', c:'#7f1d1d', l:'DM'},
-  {id:'cl100in1nes', n:'100 NES', c:'#1e293b', l:'100'},
-  {id:'cl64in1nes', n:'64 NES', c:'#334155', l:'64'},
-  {id:'cl90in1nes', n:'90 NES', c:'#0f172a', l:'90'},
-  {id:'fireboyandwatergirl2', n:'Fireboy', c:'#b91c1c', l:'FW'},
-  {id:'basketbros', n:'Basket Bros', c:'#d97706', l:'BB'},
-  {id:'hillclimbracinglite', n:'Hill Climb', c:'#2563eb', l:'HC'},
-  {id:'candycrush', n:'Candy Crush', c:'#db2777', l:'CC'},
-  {id:'basketballstars', n:'Basket Stars', c:'#c2410c', l:'BS'},
-  {id:'ducklife', n:'Duck Life', c:'#0d9488', l:'DL'},
-  {id:'ducklife4', n:'Duck Life 4', c:'#14b8a6', l:'D4'},
-  {id:'chess', n:'Chess', c:'#1e293b', l:'CH'},
-  {id:'awesometanks2', n:'Awesome Tanks', c:'#64748b', l:'AT'},
-  {id:'cl10bullets', n:'10 Bullets', c:'#991b1b', l:'10B'},
-  {id:'cl1morebullets', n:'More Bullets', c:'#9d174d', l:'MB'},
-  {id:'cl100RoomsofEnemies', n:'100 Rooms', c:'#1e3a8a', l:'100R'},
-  {id:'cl2Dshooting', n:'2D Shooting', c:'#312e81', l:'2DS'},
-  {id:'cl3dash', n:'3Dash', c:'#000000', l:'3D'},
-  {id:'cl2048', n:'2048', c:'#ea580c', l:'48'},
-  {id:'cl8ballpool', n:'8 Ball Pool', c:'#166534', l:'8B'},
-  {id:'clBTD1', n:'Bloons TD', c:'#78350f', l:'BTD'},
-  {id:'clADOFAI', n:'ADOFAI', c:'#9d174d', l:'ADF'},
-  {id:'cl10minutestildawn', n:'10 Minutes', c:'#4c1d95', l:'10M'},
-  {id:'cl12minibattles', n:'12 Battles', c:'#9a3412', l:'12'},
-  {id:'cl13bones', n:'13 Bones', c:'#581c87', l:'13'},
-  {id:'cl1942nes', n:'1942', c:'#1e3a8a', l:'42'},
-  {id:'cl3dpinballspacecadet', n:'3D Pinball', c:'#134e4a', l:'PB'},
-  {id:'idlebreakout', n:'Idle Breakout', c:'#713f12', l:'IB'},
-  {id:'houseofhazards', n:'House Hazards', c:'#475569', l:'HH'},
-  {id:'circloO', n:'CircloO', c:'#3730a3', l:'CO'},
-  {id:'learntofly', n:'Learn to Fly', c:'#0f766e', l:'LF'},
-  {id:'motox3m2', n:'Moto X3M 2', c:'#c2410c', l:'M2'},
-  {id:'motox3mpoolparty', n:'Moto Pool', c:'#0891b2', l:'MP'},
-  {id:'bobtherobber', n:'Bob the Robber', c:'#6b21a8', l:'BR'},
-  {id:'breakingthebank', n:'Break Bank', c:'#a16207', l:'BK'},
-  {id:'escapingtheprison', n:'Escape Prison', c:'#9f1239', l:'EP'},
-  {id:'badicecream', n:'Bad Ice Cream', c:'#0369a1', l:'BI'}
+  {id:'geometrydash',n:'Geometry Dash',c:'#00ffff',l:'GD'},
+  {id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
+  {id:'motox3m',n:'Moto X3M',c:'#ff6b00',l:'MX'},
+  {id:'angrybirds',n:'Angry Birds',c:'#ff2a2a',l:'AB'},
+  {id:'fruitninja',n:'Fruit Ninja',c:'#00ff66',l:'FN'},
+  {id:'cl2doom',n:'Doom',c:'#ff0000',l:'DM'},
+  {id:'cl100in1nes',n:'100 NES',c:'#00aaff',l:'100'},
+  {id:'cl64in1nes',n:'64 NES',c:'#0088ff',l:'64'},
+  {id:'cl90in1nes',n:'90 NES',c:'#0066cc',l:'90'},
+  {id:'fireboyandwatergirl2',n:'Fireboy',c:'#ff4400',l:'FW'},
+  {id:'basketbros',n:'Basket Bros',c:'#ffaa00',l:'BB'},
+  {id:'hillclimbracinglite',n:'Hill Climb',c:'#00aaff',l:'HC'},
+  {id:'candycrush',n:'Candy Crush',c:'#ff00aa',l:'CC'},
+  {id:'basketballstars',n:'Basket Stars',c:'#ff6600',l:'BS'},
+  {id:'ducklife',n:'Duck Life',c:'#00ccaa',l:'DL'},
+  {id:'ducklife4',n:'Duck Life 4',c:'#00e6b8',l:'D4'},
+  {id:'chess',n:'Chess',c:'#4488ff',l:'CH'},
+  {id:'awesometanks2',n:'Awesome Tanks',c:'#88aacc',l:'AT'},
+  {id:'cl10bullets',n:'10 Bullets',c:'#ff0033',l:'10B'},
+  {id:'cl1morebullets',n:'More Bullets',c:'#ff0066',l:'MB'},
+  {id:'cl100RoomsofEnemies',n:'100 Rooms',c:'#0044ff',l:'100R'},
+  {id:'cl2Dshooting',n:'2D Shooting',c:'#6600ff',l:'2DS'},
+  {id:'cl3dash',n:'3Dash',c:'#00ff00',l:'3D'},
+  {id:'cl2048',n:'2048',c:'#ff8800',l:'48'},
+  {id:'cl8ballpool',n:'8 Ball Pool',c:'#00cc44',l:'8B'},
+  {id:'clBTD1',n:'Bloons TD',c:'#aa5500',l:'BTD'},
+  {id:'clADOFAI',n:'ADOFAI',c:'#ff00cc',l:'ADF'},
+  {id:'cl10minutestildawn',n:'10 Minutes',c:'#8800ff',l:'10M'},
+  {id:'cl12minibattles',n:'12 Battles',c:'#ff4400',l:'12'},
+  {id:'cl13bones',n:'13 Bones',c:'#aa00ff',l:'13'},
+  {id:'cl1942nes',n:'1942',c:'#0066ff',l:'42'},
+  {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00aa88',l:'PB'},
+  {id:'idlebreakout',n:'Idle Breakout',c:'#cc8800',l:'IB'},
+  {id:'houseofhazards',n:'House Hazards',c:'#668899',l:'HH'},
+  {id:'circloO',n:'CircloO',c:'#4466ff',l:'CO'},
+  {id:'learntofly',n:'Learn to Fly',c:'#00aa99',l:'LF'},
+  {id:'motox3m2',n:'Moto X3M 2',c:'#ff5500',l:'M2'},
+  {id:'motox3mpoolparty',n:'Moto Pool',c:'#00bbcc',l:'MP'},
+  {id:'bobtherobber',n:'Bob the Robber',c:'#aa44ff',l:'BR'},
+  {id:'breakingthebank',n:'Break Bank',c:'#ffcc00',l:'BK'},
+  {id:'escapingtheprison',n:'Escape Prison',c:'#ff2266',l:'EP'},
+  {id:'badicecream',n:'Bad Ice Cream',c:'#00aaff',l:'BI'},
+  {id:'cl1v1lol',n:'1v1.LOL',c:'#00ffcc',l:'1V1'},
+  {id:'cl3pandas',n:'3 Pandas',c:'#ffaa00',l:'3P'},
+  {id:'cl60secondsburgerrun',n:'Burger Run',c:'#ff6600',l:'BRG'},
+  {id:'cl8ballclassic',n:'8 Ball Classic',c:'#00aa44',l:'8C'}
 ];
 
 const desk = document.getElementById('desktop');
@@ -89,13 +92,13 @@ juegos.forEach(j => {
   const d = document.createElement('div');
   d.className = 'sc';
   d.onclick = () => abrir(j.id, j.n);
-  d.innerHTML = `<div class="ic" style="background:${j.c}">${j.l}</div><div class="lb">${j.n}</div>`;
+  d.innerHTML = `<div class="ic" style="background:${j.c};color:${j.c}">${j.l}</div><div class="lb">${j.n}</div>`;
   desk.appendChild(d);
 
   const m = document.createElement('div');
   m.className = 'mi';
   m.onclick = () => abrir(j.id, j.n);
-  m.innerHTML = `<i style="background:${j.c}">${j.l}</i> ${j.n}`;
+  m.innerHTML = `<i style="background:${j.c};color:${j.c}">${j.l}</i> ${j.n}`;
   menu.appendChild(m);
 });
 
