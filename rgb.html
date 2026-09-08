@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows 11 RGB</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;user-select:none}
+body{height:100vh;background:#0a0a12;background-image:radial-gradient(ellipse at 20% 50%,rgba(0,255,255,.1) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,0,255,.1) 0%,transparent 50%);font-family:'Segoe UI',system-ui,sans-serif;display:flex;flex-direction:column;color:#fff;overflow:hidden}
+#desktop{flex:1;padding:18px;display:grid;grid-template-columns:repeat(auto-fill,100px);grid-auto-rows:108px;gap:12px;align-content:start}
+.sc{width:100px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:12px;transition:all .15s}
+.sc:hover{background:rgba(0,255,255,.1);box-shadow:0 0 25px rgba(0,255,255,.2)}
+.ic{width:54px;height:54px;margin:0 auto 7px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;box-shadow:0 0 15px rgba(0,0,0,.6),0 0 10px currentColor;border:1px solid rgba(255,255,255,.2)}
+.lb{font-size:12px;font-weight:500;text-shadow:0 0 8px #000;line-height:1.2}
+#bar{height:50px;background:rgba(8,8,16,.95);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-top:1px solid rgba(0,255,255,.25);box-shadow:0 -5px 30px rgba(0,255,255,.1)}
+#startBtn{height:36px;padding:0 16px;background:linear-gradient(135deg,rgba(0,255,255,.2),rgba(255,0,255,.2));border:1px solid rgba(0,255,255,.4);border-radius:8px;color:#fff;font-weight:600;font-size:14px;cursor:pointer}
+#startBtn:hover{box-shadow:0 0 20px rgba(0,255,255,.4)}
+#clock{font-size:13px;color:#0ff}
+#status{position:absolute;bottom:64px;left:16px;background:#000;color:#0f0;padding:8px 14px;font-size:12px;font-family:Consolas,monospace;border-radius:8px;border:1px solid #0f0;display:none;z-index:999}
+#menu{position:absolute;bottom:58px;left:12px;width:300px;background:rgba(10,10,18,.97);border:1px solid rgba(0,255,255,.25);border-radius:14px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 0 40px rgba(0,255,255,.2)}
+.mi{padding:10px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:12px}
+.mi:hover{background:rgba(0,255,255,.12)}
+.mi i{width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#0ff,transparent);margin:6px 0}
+#credit{position:absolute;bottom:60px;right:16px;font-size:11px;color:rgba(0,255,255,.5)}
+</style>
+</head>
+<body>
+<div id="desktop"></div>
+<div id="status">Cargando...</div>
+<div id="credit">hecho por Eduar</div>
+<div id="bar"><button id="startBtn">Inicio</button><div id="clock">00:00</div></div>
+<div id="menu"></div>
+<script>
+const juegos=[
+{id:'geometrydash',n:'Geometry Dash',c:'#00ffff',l:'GD'},
+{id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
+{id:'motox3m',n:'Moto X3M',c:'#ff6b00',l:'MX'},
+{id:'angrybirds',n:'Angry Birds',c:'#ff2a2a',l:'AB'},
+{id:'fruitninja',n:'Fruit Ninja',c:'#00ff66',l:'FN'},
+{id:'cl2doom',n:'Doom',c:'#ff0000',l:'DM'},
+{id:'cl100in1nes',n:'100 NES',c:'#00aaff',l:'100'},
+{id:'cl64in1nes',n:'64 NES',c:'#0088ff',l:'64'},
+{id:'cl90in1nes',n:'90 NES',c:'#0066cc',l:'90'},
+{id:'fireboyandwatergirl2',n:'Fireboy',c:'#ff4400',l:'FW'},
+{id:'basketbros',n:'Basket Bros',c:'#ffaa00',l:'BB'},
+{id:'hillclimbracinglite',n:'Hill Climb',c:'#00aaff',l:'HC'},
+{id:'candycrush',n:'Candy Crush',c:'#ff00aa',l:'CC'},
+{id:'basketballstars',n:'Basket Stars',c:'#ff6600',l:'BS'},
+{id:'ducklife',n:'Duck Life',c:'#00ccaa',l:'DL'},
+{id:'ducklife4',n:'Duck Life 4',c:'#00e6b8',l:'D4'},
+{id:'chess',n:'Chess',c:'#4488ff',l:'CH'},
+{id:'awesometanks2',n:'Awesome Tanks',c:'#88aacc',l:'AT'},
+{id:'cl10bullets',n:'10 Bullets',c:'#ff0033',l:'10B'},
+{id:'cl1morebullets',n:'More Bullets',c:'#ff0066',l:'MB'},
+{id:'cl100RoomsofEnemies',n:'100 Rooms',c:'#0044ff',l:'100R'},
+{id:'cl2Dshooting',n:'2D Shooting',c:'#6600ff',l:'2DS'},
+{id:'cl3dash',n:'3Dash',c:'#00ff00',l:'3D'},
+{id:'cl2048',n:'2048',c:'#ff8800',l:'48'},
+{id:'cl8ballpool',n:'8 Ball Pool',c:'#00cc44',l:'8B'},
+{id:'clBTD1',n:'Bloons TD',c:'#aa5500',l:'BTD'},
+{id:'clADOFAI',n:'ADOFAI',c:'#ff00cc',l:'ADF'},
+{id:'cl10minutestildawn',n:'10 Minutes',c:'#8800ff',l:'10M'},
+{id:'cl12minibattles',n:'12 Battles',c:'#ff4400',l:'12'},
+{id:'cl13bones',n:'13 Bones',c:'#aa00ff',l:'13'},
+{id:'cl1942nes',n:'1942',c:'#0066ff',l:'42'},
+{id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00aa88',l:'PB'},
+{id:'idlebreakout',n:'Idle Breakout',c:'#cc8800',l:'IB'},
+{id:'houseofhazards',n:'House Hazards',c:'#668899',l:'HH'},
+{id:'circloO',n:'CircloO',c:'#4466ff',l:'CO'},
+{id:'learntofly',n:'Learn to Fly',c:'#00aa99',l:'LF'},
+{id:'motox3m2',n:'Moto X3M 2',c:'#ff5500',l:'M2'},
+{id:'motox3mpoolparty',n:'Moto Pool',c:'#00bbcc',l:'MP'},
+{id:'bobtherobber',n:'Bob the Robber',c:'#aa44ff',l:'BR'},
+{id:'breakingthebank',n:'Break Bank',c:'#ffcc00',l:'BK'},
+{id:'escapingtheprison',n:'Escape Prison',c:'#ff2266',l:'EP'},
+{id:'badicecream',n:'Bad Ice Cream',c:'#00aaff',l:'BI'},
+{id:'cl3pandas',n:'3 Pandas',c:'#ffaa00',l:'3P'},
+{id:'cl60secondsburgerrun',n:'Burger Run',c:'#ff6600',l:'BRG'},
+{id:'cl8ballclassic',n:'8 Ball Classic',c:'#00aa44',l:'8C'}
+];
+const desk=document.getElementById('desktop');
+const menu=document.getElementById('menu');
+juegos.forEach(j=>{
+const d=document.createElement('div');
+d.className='sc';
+d.onclick=()=>abrir(j.id,j.n);
+d.innerHTML=`<div class="ic" style="background:${j.c}">${j.l}</div><div class="lb">${j.n}</div>`;
+desk.appendChild(d);
+const m=document.createElement('div');
+m.className='mi';
+m.onclick=()=>abrir(j.id,j.n);
+m.innerHTML=`<i style="background:${j.c}">${j.l}</i> ${j.n}`;
+menu.appendChild(m);
+});
+menu.innerHTML+=`<div class="divider"></div><div class="mi" onclick="location.reload()">Reiniciar</div><div class="mi" onclick="window.close()">Apagar</div>`;
+document.getElementById('startBtn').onclick=e=>{e.stopPropagation();menu.style.display=menu.style.display==='flex'?'none':'flex'};
+document.body.onclick=()=>menu.style.display='none';
+setInterval(()=>document.getElementById('clock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),1000);
+function abrir(id,title){
+const s=document.getElementById('status');
+s.style.display='block';
+s.textContent='Cargando '+title+'...';
+const base=id.startsWith('cl')?'https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/UGS-Files/':'https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/offline/';
+fetch(base+id+'.html').then(r=>r.ok?r.text():Promise.reject()).then(html=>{
+s.style.display='none';
+const g=window.open('about:blank','_blank');
+if(g){g.document.write(html);g.document.close();}
+else{s.style.display='block';s.textContent='Activa pop-ups';setTimeout(()=>s.style.display='none',2000);}
+}).catch(()=>{s.textContent='Error: '+title;setTimeout(()=>s.style.display='none',2000);});
+}
+</script>
+</body>
+</html>
