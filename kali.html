@@ -39,12 +39,15 @@ body{height:100vh;background:#0b0c10;background-image:radial-gradient(ellipse at
 const ventanasAbiertas = [];
 
 const juegos = [
+  {id:'cl2doom',n:'Doom',c:'#ff0000',l:'DM'},
+  {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00aa88',l:'PB'},
   {id:'geometrydash',n:'Geometry Dash',c:'#00ff64',l:'GD'},
   {id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
   {id:'motox3m',n:'Moto X3M',c:'#ff6b00',l:'MX'},
+  {id:'motox3m2',n:'Moto X3M 2',c:'#ff5500',l:'M2'},
+  {id:'motox3mpoolparty',n:'Moto Pool',c:'#00bbcc',l:'MP'},
   {id:'angrybirds',n:'Angry Birds',c:'#ff2a2a',l:'AB'},
   {id:'fruitninja',n:'Fruit Ninja',c:'#00ff66',l:'FN'},
-  {id:'cl2doom',n:'Doom',c:'#ff0000',l:'DM'},
   {id:'cl100in1nes',n:'100 NES',c:'#00aaff',l:'100'},
   {id:'cl64in1nes',n:'64 NES',c:'#0088ff',l:'64'},
   {id:'cl90in1nes',n:'90 NES',c:'#0066cc',l:'90'},
@@ -70,13 +73,10 @@ const juegos = [
   {id:'cl12minibattles',n:'12 Battles',c:'#ff4400',l:'12'},
   {id:'cl13bones',n:'13 Bones',c:'#aa00ff',l:'13'},
   {id:'cl1942nes',n:'1942',c:'#0066ff',l:'42'},
-  {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00aa88',l:'PB'},
   {id:'idlebreakout',n:'Idle Breakout',c:'#cc8800',l:'IB'},
   {id:'houseofhazards',n:'House Hazards',c:'#668899',l:'HH'},
   {id:'circloO',n:'CircloO',c:'#4466ff',l:'CO'},
   {id:'learntofly',n:'Learn to Fly',c:'#00aa99',l:'LF'},
-  {id:'motox3m2',n:'Moto X3M 2',c:'#ff5500',l:'M2'},
-  {id:'motox3mpoolparty',n:'Moto Pool',c:'#00bbcc',l:'MP'},
   {id:'bobtherobber',n:'Bob the Robber',c:'#aa44ff',l:'BR'},
   {id:'breakingthebank',n:'Break Bank',c:'#ffcc00',l:'BK'},
   {id:'escapingtheprison',n:'Escape Prison',c:'#ff2266',l:'EP'},
@@ -105,7 +105,7 @@ juegos.forEach(j => {
 
 menu.innerHTML += `
   <div class="divider"></div>
-  <div class="mi" onclick="limpiezaTotal()">Limpieza Rapida</div>
+  <div class="mi" onclick="limpiezaTotal()">Limpieza (P)</div>
   <div class="mi" onclick="location.reload()">Reiniciar</div>
   <div class="mi" onclick="window.close()">Apagar</div>
 `;
@@ -115,6 +115,14 @@ document.getElementById('startBtn').onclick = e => {
   menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 };
 document.body.onclick = () => menu.style.display = 'none';
+
+// Tecla P = Limpieza total
+document.addEventListener('keydown', e => {
+  if (e.key === 'p' || e.key === 'P') {
+    e.preventDefault();
+    limpiezaTotal();
+  }
+});
 
 setInterval(() => {
   document.getElementById('clock').textContent = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
@@ -151,17 +159,14 @@ function abrir(id, title) {
 }
 
 function limpiezaTotal() {
-  // Cerrar todas las pestañas de juegos
   ventanasAbiertas.forEach(v => {
     try { if (v && !v.closed) v.close(); } catch(e) {}
   });
   ventanasAbiertas.length = 0;
 
-  // Limpiar storage
   try { localStorage.clear(); } catch(e) {}
   try { sessionStorage.clear(); } catch(e) {}
 
-  // Redirigir a Classroom
   window.location.href = 'https://classroom.google.com';
 }
 </script>
