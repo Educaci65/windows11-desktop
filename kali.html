@@ -7,11 +7,11 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;user-select:none}
 body{height:100vh;background:#0b0c10;background-image:radial-gradient(ellipse at top,rgba(0,255,100,.05),transparent 60%);font-family:'Segoe UI',Consolas,monospace;display:flex;flex-direction:column;color:#c5c8c6;overflow:hidden}
-#desktop{flex:1;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,100px);grid-auto-rows:110px;gap:14px;align-content:start}
+#desktop{flex:1;padding:18px;display:grid;grid-template-columns:repeat(auto-fill,100px);grid-auto-rows:105px;gap:12px;align-content:start;overflow-y:auto}
 .sc{width:100px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:8px;transition:all .15s}
-.sc:hover{background:rgba(0,255,100,.08);box-shadow:0 0 20px rgba(0,255,100,.15)}
-.ic{width:52px;height:52px;margin:0 auto 7px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#0b0c10;box-shadow:0 0 12px currentColor;border:1px solid rgba(0,255,100,.3)}
-.lb{font-size:11px;font-weight:500;color:#a0a0a0;text-shadow:0 0 6px #000}
+.sc:hover{background:rgba(0,255,100,.08);box-shadow:0 0 18px rgba(0,255,100,.15)}
+.ic{width:50px;height:50px;margin:0 auto 6px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#0b0c10;box-shadow:0 0 10px currentColor;border:1px solid rgba(0,255,100,.3)}
+.lb{font-size:11px;font-weight:500;color:#a0a0a0;text-shadow:0 0 6px #000;line-height:1.2}
 #bar{height:42px;background:#111;border-top:1px solid #1f1f1f;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-family:Consolas,monospace}
 #startBtn{height:30px;padding:0 14px;background:#1a1a1a;border:1px solid #00ff64;border-radius:4px;color:#00ff64;font-weight:600;font-size:13px;cursor:pointer;font-family:Consolas,monospace}
 #startBtn:hover{background:#00ff64;color:#000;box-shadow:0 0 15px #00ff64}
@@ -39,51 +39,58 @@ body{height:100vh;background:#0b0c10;background-image:radial-gradient(ellipse at
 const ventanasAbiertas = [];
 
 const juegos = [
+  // === Mejores graficos / Accion ===
   {id:'cl2doom',n:'Doom',c:'#ff0000',l:'DM'},
   {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00aa88',l:'PB'},
-  {id:'geometrydash',n:'Geometry Dash',c:'#00ff64',l:'GD'},
-  {id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
+  {id:'cl3dash',n:'3Dash',c:'#00ff00',l:'3D'},
   {id:'motox3m',n:'Moto X3M',c:'#ff6b00',l:'MX'},
   {id:'motox3m2',n:'Moto X3M 2',c:'#ff5500',l:'M2'},
   {id:'motox3mpoolparty',n:'Moto Pool',c:'#00bbcc',l:'MP'},
-  {id:'angrybirds',n:'Angry Birds',c:'#ff2a2a',l:'AB'},
-  {id:'fruitninja',n:'Fruit Ninja',c:'#00ff66',l:'FN'},
-  {id:'cl100in1nes',n:'100 NES',c:'#00aaff',l:'100'},
-  {id:'cl64in1nes',n:'64 NES',c:'#0088ff',l:'64'},
-  {id:'cl90in1nes',n:'90 NES',c:'#0066cc',l:'90'},
-  {id:'fireboyandwatergirl2',n:'Fireboy',c:'#ff4400',l:'FW'},
-  {id:'basketbros',n:'Basket Bros',c:'#ffaa00',l:'BB'},
   {id:'hillclimbracinglite',n:'Hill Climb',c:'#00aaff',l:'HC'},
-  {id:'candycrush',n:'Candy Crush',c:'#ff00aa',l:'CC'},
-  {id:'basketballstars',n:'Basket Stars',c:'#ff6600',l:'BS'},
-  {id:'ducklife',n:'Duck Life',c:'#00ccaa',l:'DL'},
-  {id:'ducklife4',n:'Duck Life 4',c:'#00e6b8',l:'D4'},
-  {id:'chess',n:'Chess',c:'#4488ff',l:'CH'},
   {id:'awesometanks2',n:'Awesome Tanks',c:'#88aacc',l:'AT'},
+  {id:'cl2Dshooting',n:'2D Shooting',c:'#6600ff',l:'2DS'},
   {id:'cl10bullets',n:'10 Bullets',c:'#ff0033',l:'10B'},
   {id:'cl1morebullets',n:'More Bullets',c:'#ff0066',l:'MB'},
   {id:'cl100RoomsofEnemies',n:'100 Rooms',c:'#0044ff',l:'100R'},
-  {id:'cl2Dshooting',n:'2D Shooting',c:'#6600ff',l:'2DS'},
-  {id:'cl3dash',n:'3Dash',c:'#00ff00',l:'3D'},
+  {id:'cl12minibattles',n:'12 Battles',c:'#ff4400',l:'12'},
+  {id:'cl13bones',n:'13 Bones',c:'#aa00ff',l:'13'},
+
+  // === Clasicos & Populares ===
+  {id:'geometrydash',n:'Geometry Dash',c:'#00ff64',l:'GD'},
+  {id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
+  {id:'angrybirds',n:'Angry Birds',c:'#ff2a2a',l:'AB'},
+  {id:'fruitninja',n:'Fruit Ninja',c:'#00ff66',l:'FN'},
+  {id:'fireboyandwatergirl2',n:'Fireboy',c:'#ff4400',l:'FW'},
+  {id:'candycrush',n:'Candy Crush',c:'#ff00aa',l:'CC'},
+  {id:'basketbros',n:'Basket Bros',c:'#ffaa00',l:'BB'},
+  {id:'basketballstars',n:'Basket Stars',c:'#ff6600',l:'BS'},
+  {id:'clADOFAI',n:'ADOFAI',c:'#ff00cc',l:'ADF'},
   {id:'cl2048',n:'2048',c:'#ff8800',l:'48'},
   {id:'cl8ballpool',n:'8 Ball Pool',c:'#00cc44',l:'8B'},
   {id:'clBTD1',n:'Bloons TD',c:'#aa5500',l:'BTD'},
-  {id:'clADOFAI',n:'ADOFAI',c:'#ff00cc',l:'ADF'},
-  {id:'cl10minutestildawn',n:'10 Minutes',c:'#8800ff',l:'10M'},
-  {id:'cl12minibattles',n:'12 Battles',c:'#ff4400',l:'12'},
-  {id:'cl13bones',n:'13 Bones',c:'#aa00ff',l:'13'},
+
+  // === NES & Retro ===
+  {id:'cl100in1nes',n:'100 NES',c:'#00aaff',l:'100'},
+  {id:'cl64in1nes',n:'64 NES',c:'#0088ff',l:'64'},
+  {id:'cl90in1nes',n:'90 NES',c:'#0066cc',l:'90'},
   {id:'cl1942nes',n:'1942',c:'#0066ff',l:'42'},
-  {id:'idlebreakout',n:'Idle Breakout',c:'#cc8800',l:'IB'},
-  {id:'houseofhazards',n:'House Hazards',c:'#668899',l:'HH'},
-  {id:'circloO',n:'CircloO',c:'#4466ff',l:'CO'},
+
+  // === Otros ===
+  {id:'ducklife',n:'Duck Life',c:'#00ccaa',l:'DL'},
+  {id:'ducklife4',n:'Duck Life 4',c:'#00e6b8',l:'D4'},
+  {id:'chess',n:'Chess',c:'#4488ff',l:'CH'},
   {id:'learntofly',n:'Learn to Fly',c:'#00aa99',l:'LF'},
   {id:'bobtherobber',n:'Bob the Robber',c:'#aa44ff',l:'BR'},
   {id:'breakingthebank',n:'Break Bank',c:'#ffcc00',l:'BK'},
   {id:'escapingtheprison',n:'Escape Prison',c:'#ff2266',l:'EP'},
   {id:'badicecream',n:'Bad Ice Cream',c:'#00aaff',l:'BI'},
+  {id:'idlebreakout',n:'Idle Breakout',c:'#cc8800',l:'IB'},
+  {id:'houseofhazards',n:'House Hazards',c:'#668899',l:'HH'},
+  {id:'circloO',n:'CircloO',c:'#4466ff',l:'CO'},
   {id:'cl3pandas',n:'3 Pandas',c:'#ffaa00',l:'3P'},
   {id:'cl60secondsburgerrun',n:'Burger Run',c:'#ff6600',l:'BRG'},
-  {id:'cl8ballclassic',n:'8 Ball Classic',c:'#00aa44',l:'8C'}
+  {id:'cl8ballclassic',n:'8 Ball Classic',c:'#00aa44',l:'8C'},
+  {id:'cl10minutestildawn',n:'10 Minutes',c:'#8800ff',l:'10M'}
 ];
 
 const desk = document.getElementById('desktop');
@@ -116,7 +123,6 @@ document.getElementById('startBtn').onclick = e => {
 };
 document.body.onclick = () => menu.style.display = 'none';
 
-// Tecla P = Limpieza total
 document.addEventListener('keydown', e => {
   if (e.key === 'p' || e.key === 'P') {
     e.preventDefault();
@@ -163,10 +169,8 @@ function limpiezaTotal() {
     try { if (v && !v.closed) v.close(); } catch(e) {}
   });
   ventanasAbiertas.length = 0;
-
   try { localStorage.clear(); } catch(e) {}
   try { sessionStorage.clear(); } catch(e) {}
-
   window.location.href = 'https://classroom.google.com';
 }
 </script>
