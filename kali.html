@@ -3,26 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kali Linux Gamer</title>
+<title>Kali Gamer</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;user-select:none}
-body{height:100vh;background:#0b0c10;background-image:radial-gradient(ellipse at top,rgba(0,255,100,.05),transparent 60%);font-family:'Segoe UI',Consolas,monospace;display:flex;flex-direction:column;color:#c5c8c6;overflow:hidden}
-#desktop{flex:1;padding:18px;display:grid;grid-template-columns:repeat(auto-fill,100px);grid-auto-rows:105px;gap:12px;align-content:start;overflow-y:auto}
-.sc{width:100px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:8px;transition:all .15s}
-.sc:hover{background:rgba(0,255,100,.08);box-shadow:0 0 18px rgba(0,255,100,.15)}
-.ic{width:50px;height:50px;margin:0 auto 6px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#0b0c10;box-shadow:0 0 10px currentColor;border:1px solid rgba(0,255,100,.3)}
-.lb{font-size:11px;font-weight:500;color:#a0a0a0;text-shadow:0 0 6px #000;line-height:1.2}
-#bar{height:42px;background:#111;border-top:1px solid #1f1f1f;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-family:Consolas,monospace}
-#startBtn{height:30px;padding:0 14px;background:#1a1a1a;border:1px solid #00ff64;border-radius:4px;color:#00ff64;font-weight:600;font-size:13px;cursor:pointer;font-family:Consolas,monospace}
-#startBtn:hover{background:#00ff64;color:#000;box-shadow:0 0 15px #00ff64}
-#clock{font-size:13px;color:#00ff64}
-#status{position:absolute;bottom:54px;left:14px;background:#000;color:#00ff64;padding:8px 12px;font-size:12px;font-family:Consolas,monospace;border:1px solid #00ff64;display:none;z-index:999}
-#menu{position:absolute;bottom:48px;left:10px;width:280px;background:#111;border:1px solid #00ff64;border-radius:6px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 0 30px rgba(0,255,100,.2)}
-.mi{padding:9px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#c5c8c6;font-family:Consolas,monospace}
+body{height:100vh;background:#050508;background-image:
+  radial-gradient(ellipse at 10% 20%,rgba(0,255,100,.07) 0%,transparent 50%),
+  radial-gradient(ellipse at 90% 80%,rgba(0,150,255,.05) 0%,transparent 50%);
+  font-family:'Segoe UI',Consolas,monospace;display:flex;flex-direction:column;color:#d0d0d0;overflow:hidden}
+#desktop{flex:1;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,96px);grid-auto-rows:100px;gap:10px;align-content:start;overflow-y:auto}
+.sc{width:96px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:10px;transition:all .18s}
+.sc:hover{background:rgba(0,255,100,.1);transform:translateY(-2px);box-shadow:0 0 25px rgba(0,255,100,.2)}
+.ic{width:48px;height:48px;margin:0 auto 6px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#050508;box-shadow:0 0 14px currentColor,0 4px 12px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15)}
+.lb{font-size:11px;font-weight:500;color:#aaa;text-shadow:0 0 8px #000;line-height:1.2}
+#bar{height:44px;background:rgba(8,8,12,.95);border-top:1px solid rgba(0,255,100,.2);display:flex;align-items:center;justify-content:space-between;padding:0 14px;box-shadow:0 -4px 20px rgba(0,255,100,.08)}
+#startBtn{height:32px;padding:0 16px;background:linear-gradient(135deg,rgba(0,255,100,.15),rgba(0,150,255,.1));border:1px solid #00ff64;border-radius:6px;color:#00ff64;font-weight:600;font-size:13px;cursor:pointer;font-family:Consolas,monospace;transition:all .15s}
+#startBtn:hover{background:#00ff64;color:#000;box-shadow:0 0 20px #00ff64}
+#clock{font-size:13px;color:#00ff64;letter-spacing:1px}
+#status{position:absolute;bottom:56px;left:14px;background:#000;color:#00ff64;padding:8px 14px;font-size:12px;font-family:Consolas,monospace;border:1px solid #00ff64;border-radius:6px;display:none;z-index:999;box-shadow:0 0 15px rgba(0,255,100,.3)}
+#menu{position:absolute;bottom:50px;left:10px;width:290px;background:rgba(8,8,12,.97);border:1px solid rgba(0,255,100,.25);border-radius:10px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 0 40px rgba(0,255,100,.15)}
+.mi{padding:10px 16px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:12px;color:#ccc;font-family:Consolas,monospace;transition:all .1s}
 .mi:hover{background:rgba(0,255,100,.1);color:#00ff64}
-.mi i{width:22px;height:22px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#000}
-.divider{height:1px;background:#1f1f1f;margin:4px 0}
-#credit{position:absolute;bottom:50px;right:14px;font-size:11px;color:#00ff64;opacity:.5;font-family:Consolas,monospace}
+.mi i{width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#000}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,100,.3),transparent);margin:5px 0}
+#credit{position:absolute;bottom:52px;right:14px;font-size:11px;color:rgba(0,255,100,.45);font-family:Consolas,monospace}
 </style>
 </head>
 <body>
@@ -39,58 +42,58 @@ body{height:100vh;background:#0b0c10;background-image:radial-gradient(ellipse at
 const ventanasAbiertas = [];
 
 const juegos = [
-  // === Mejores graficos / Accion ===
-  {id:'cl2doom',n:'Doom',c:'#ff0000',l:'DM'},
-  {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00aa88',l:'PB'},
-  {id:'cl3dash',n:'3Dash',c:'#00ff00',l:'3D'},
-  {id:'motox3m',n:'Moto X3M',c:'#ff6b00',l:'MX'},
-  {id:'motox3m2',n:'Moto X3M 2',c:'#ff5500',l:'M2'},
-  {id:'motox3mpoolparty',n:'Moto Pool',c:'#00bbcc',l:'MP'},
-  {id:'hillclimbracinglite',n:'Hill Climb',c:'#00aaff',l:'HC'},
-  {id:'awesometanks2',n:'Awesome Tanks',c:'#88aacc',l:'AT'},
-  {id:'cl2Dshooting',n:'2D Shooting',c:'#6600ff',l:'2DS'},
-  {id:'cl10bullets',n:'10 Bullets',c:'#ff0033',l:'10B'},
-  {id:'cl1morebullets',n:'More Bullets',c:'#ff0066',l:'MB'},
-  {id:'cl100RoomsofEnemies',n:'100 Rooms',c:'#0044ff',l:'100R'},
-  {id:'cl12minibattles',n:'12 Battles',c:'#ff4400',l:'12'},
-  {id:'cl13bones',n:'13 Bones',c:'#aa00ff',l:'13'},
+  // Mejores graficos posibles
+  {id:'cl2doom',n:'Doom',c:'#ff0033',l:'DM'},
+  {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00cc99',l:'PB'},
+  {id:'cl3dash',n:'3Dash',c:'#00ff66',l:'3D'},
+  {id:'motox3m',n:'Moto X3M',c:'#ff6600',l:'MX'},
+  {id:'motox3m2',n:'Moto X3M 2',c:'#ff4400',l:'M2'},
+  {id:'motox3mpoolparty',n:'Moto Pool',c:'#00b8d4',l:'MP'},
+  {id:'hillclimbracinglite',n:'Hill Climb',c:'#0091ea',l:'HC'},
+  {id:'awesometanks2',n:'Awesome Tanks',c:'#78909c',l:'AT'},
+  {id:'cl2Dshooting',n:'2D Shooting',c:'#7c4dff',l:'2DS'},
+  {id:'cl10bullets',n:'10 Bullets',c:'#ff1744',l:'10B'},
+  {id:'cl1morebullets',n:'More Bullets',c:'#f50057',l:'MB'},
+  {id:'cl100RoomsofEnemies',n:'100 Rooms',c:'#304ffe',l:'100R'},
+  {id:'cl12minibattles',n:'12 Battles',c:'#ff3d00',l:'12'},
+  {id:'cl13bones',n:'13 Bones',c:'#d500f9',l:'13'},
 
-  // === Clasicos & Populares ===
-  {id:'geometrydash',n:'Geometry Dash',c:'#00ff64',l:'GD'},
-  {id:'amongus',n:'Among Us',c:'#ff0040',l:'AU'},
-  {id:'angrybirds',n:'Angry Birds',c:'#ff2a2a',l:'AB'},
-  {id:'fruitninja',n:'Fruit Ninja',c:'#00ff66',l:'FN'},
-  {id:'fireboyandwatergirl2',n:'Fireboy',c:'#ff4400',l:'FW'},
-  {id:'candycrush',n:'Candy Crush',c:'#ff00aa',l:'CC'},
-  {id:'basketbros',n:'Basket Bros',c:'#ffaa00',l:'BB'},
-  {id:'basketballstars',n:'Basket Stars',c:'#ff6600',l:'BS'},
-  {id:'clADOFAI',n:'ADOFAI',c:'#ff00cc',l:'ADF'},
-  {id:'cl2048',n:'2048',c:'#ff8800',l:'48'},
-  {id:'cl8ballpool',n:'8 Ball Pool',c:'#00cc44',l:'8B'},
-  {id:'clBTD1',n:'Bloons TD',c:'#aa5500',l:'BTD'},
+  // Populares limpios
+  {id:'geometrydash',n:'Geometry Dash',c:'#00e676',l:'GD'},
+  {id:'amongus',n:'Among Us',c:'#ff1744',l:'AU'},
+  {id:'angrybirds',n:'Angry Birds',c:'#ff5252',l:'AB'},
+  {id:'fruitninja',n:'Fruit Ninja',c:'#69f0ae',l:'FN'},
+  {id:'fireboyandwatergirl2',n:'Fireboy',c:'#ff6e40',l:'FW'},
+  {id:'candycrush',n:'Candy Crush',c:'#f50057',l:'CC'},
+  {id:'basketbros',n:'Basket Bros',c:'#ffab00',l:'BB'},
+  {id:'basketballstars',n:'Basket Stars',c:'#ff9100',l:'BS'},
+  {id:'clADOFAI',n:'ADOFAI',c:'#e040fb',l:'ADF'},
+  {id:'cl2048',n:'2048',c:'#ff9100',l:'48'},
+  {id:'cl8ballpool',n:'8 Ball Pool',c:'#00e676',l:'8B'},
+  {id:'clBTD1',n:'Bloons TD',c:'#a1887f',l:'BTD'},
 
-  // === NES & Retro ===
-  {id:'cl100in1nes',n:'100 NES',c:'#00aaff',l:'100'},
-  {id:'cl64in1nes',n:'64 NES',c:'#0088ff',l:'64'},
-  {id:'cl90in1nes',n:'90 NES',c:'#0066cc',l:'90'},
-  {id:'cl1942nes',n:'1942',c:'#0066ff',l:'42'},
+  // Retro
+  {id:'cl100in1nes',n:'100 NES',c:'#40c4ff',l:'100'},
+  {id:'cl64in1nes',n:'64 NES',c:'#00b0ff',l:'64'},
+  {id:'cl90in1nes',n:'90 NES',c:'#0091ea',l:'90'},
+  {id:'cl1942nes',n:'1942',c:'#2979ff',l:'42'},
 
-  // === Otros ===
-  {id:'ducklife',n:'Duck Life',c:'#00ccaa',l:'DL'},
-  {id:'ducklife4',n:'Duck Life 4',c:'#00e6b8',l:'D4'},
-  {id:'chess',n:'Chess',c:'#4488ff',l:'CH'},
-  {id:'learntofly',n:'Learn to Fly',c:'#00aa99',l:'LF'},
-  {id:'bobtherobber',n:'Bob the Robber',c:'#aa44ff',l:'BR'},
-  {id:'breakingthebank',n:'Break Bank',c:'#ffcc00',l:'BK'},
-  {id:'escapingtheprison',n:'Escape Prison',c:'#ff2266',l:'EP'},
-  {id:'badicecream',n:'Bad Ice Cream',c:'#00aaff',l:'BI'},
-  {id:'idlebreakout',n:'Idle Breakout',c:'#cc8800',l:'IB'},
-  {id:'houseofhazards',n:'House Hazards',c:'#668899',l:'HH'},
-  {id:'circloO',n:'CircloO',c:'#4466ff',l:'CO'},
-  {id:'cl3pandas',n:'3 Pandas',c:'#ffaa00',l:'3P'},
-  {id:'cl60secondsburgerrun',n:'Burger Run',c:'#ff6600',l:'BRG'},
-  {id:'cl8ballclassic',n:'8 Ball Classic',c:'#00aa44',l:'8C'},
-  {id:'cl10minutestildawn',n:'10 Minutes',c:'#8800ff',l:'10M'}
+  // Otros
+  {id:'ducklife',n:'Duck Life',c:'#1de9b6',l:'DL'},
+  {id:'ducklife4',n:'Duck Life 4',c:'#00bfa5',l:'D4'},
+  {id:'chess',n:'Chess',c:'#448aff',l:'CH'},
+  {id:'learntofly',n:'Learn to Fly',c:'#00bfa5',l:'LF'},
+  {id:'bobtherobber',n:'Bob Robber',c:'#b388ff',l:'BR'},
+  {id:'breakingthebank',n:'Break Bank',c:'#ffd600',l:'BK'},
+  {id:'escapingtheprison',n:'Escape Prison',c:'#ff4081',l:'EP'},
+  {id:'badicecream',n:'Bad Ice Cream',c:'#40c4ff',l:'BI'},
+  {id:'idlebreakout',n:'Idle Breakout',c:'#ffab00',l:'IB'},
+  {id:'houseofhazards',n:'House Hazards',c:'#90a4ae',l:'HH'},
+  {id:'circloO',n:'CircloO',c:'#536dfe',l:'CO'},
+  {id:'cl3pandas',n:'3 Pandas',c:'#ffab00',l:'3P'},
+  {id:'cl60secondsburgerrun',n:'Burger Run',c:'#ff6d00',l:'BRG'},
+  {id:'cl8ballclassic',n:'8 Ball Classic',c:'#00c853',l:'8C'},
+  {id:'cl10minutestildawn',n:'10 Minutes',c:'#aa00ff',l:'10M'}
 ];
 
 const desk = document.getElementById('desktop');
