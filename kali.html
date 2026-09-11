@@ -39,12 +39,6 @@ body{height:100vh;background:#050508;background-image:radial-gradient(ellipse at
 const ventanasAbiertas = [];
 
 const juegos = [
-  // === NUEVOS EXTERNOS (buenos graficos) ===
-  {id:'slowroads',n:'Slow Roads',c:'#00e5ff',l:'SR',url:'https://slowroads.io'},
-  {id:'hexgl',n:'HexGL',c:'#7c4dff',l:'HX',url:'https://bkcore.com/hexgl/'},
-  {id:'smashkarts',n:'Smash Karts',c:'#ff9100',l:'SK',url:'https://smashkarts.io'},
-  {id:'1v1lol',n:'1v1.LOL',c:'#00e676',l:'1V1',url:'https://1v1.lol'},
-
   // === MEJORES GRAFICOS / ACCION ===
   {id:'cl2doom',n:'Doom',c:'#ff0033',l:'DM'},
   {id:'cl3dpinballspacecadet',n:'3D Pinball',c:'#00cc99',l:'PB'},
@@ -129,13 +123,13 @@ const menu = document.getElementById('menu');
 juegos.forEach(j => {
   const d = document.createElement('div');
   d.className = 'sc';
-  d.onclick = () => abrir(j);
+  d.onclick = () => abrir(j.id, j.n);
   d.innerHTML = `<div class="ic" style="background:${j.c}">${j.l}</div><div class="lb">${j.n}</div>`;
   desk.appendChild(d);
 
   const m = document.createElement('div');
   m.className = 'mi';
-  m.onclick = () => abrir(j);
+  m.onclick = () => abrir(j.id, j.n);
   m.innerHTML = `<i style="background:${j.c}">${j.l}</i> ${j.n}`;
   menu.appendChild(m);
 });
@@ -164,30 +158,16 @@ setInterval(() => {
   document.getElementById('clock').textContent = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
 }, 1000);
 
-function abrir(j) {
+function abrir(id, title) {
   const s = document.getElementById('status');
   s.style.display = 'block';
-  s.textContent = 'root@kali:~# cargando ' + j.n + '...';
+  s.textContent = 'root@kali:~# cargando ' + title + '...';
 
-  // Si es un juego externo (tiene url)
-  if (j.url) {
-    const g = window.open(j.url, '_blank');
-    if (g) {
-      ventanasAbiertas.push(g);
-      s.style.display = 'none';
-    } else {
-      s.textContent = 'root@kali:~# activa pop-ups';
-      setTimeout(() => s.style.display = 'none', 2200);
-    }
-    return;
-  }
-
-  // Juegos normales del CDN
-  const base = j.id.startsWith('cl')
+  const base = id.startsWith('cl')
     ? 'https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/UGS-Files/'
     : 'https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/offline/';
 
-  fetch(base + j.id + '.html')
+  fetch(base + id + '.html')
     .then(r => r.ok ? r.text() : Promise.reject())
     .then(html => {
       s.style.display = 'none';
@@ -203,7 +183,7 @@ function abrir(j) {
       }
     })
     .catch(() => {
-      s.textContent = 'root@kali:~# error: ' + j.n;
+      s.textContent = 'root@kali:~# error: ' + title;
       setTimeout(() => s.style.display = 'none', 2200);
     });
 }
