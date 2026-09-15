@@ -3,26 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kali Gamer</title>
+<title>Kali RGB</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;user-select:none}
-body{height:100vh;background:#050508;background-image:radial-gradient(ellipse at 10% 20%,rgba(0,255,100,.07) 0%,transparent 50%),radial-gradient(ellipse at 90% 80%,rgba(0,150,255,.05) 0%,transparent 50%);font-family:'Segoe UI',Consolas,monospace;display:flex;flex-direction:column;color:#d0d0d0;overflow:hidden}
+body{height:100vh;background:#030308;background-image:
+  radial-gradient(ellipse at 15% 30%,rgba(0,255,255,.09) 0%,transparent 50%),
+  radial-gradient(ellipse at 85% 20%,rgba(255,0,255,.08) 0%,transparent 50%),
+  radial-gradient(ellipse at 50% 90%,rgba(0,100,255,.06) 0%,transparent 50%);
+  font-family:'Segoe UI',Consolas,monospace;display:flex;flex-direction:column;color:#e0e0e0;overflow:hidden}
 #desktop{flex:1;padding:14px;display:grid;grid-template-columns:repeat(auto-fill,92px);grid-auto-rows:96px;gap:8px;align-content:start;overflow-y:auto}
-.sc{width:92px;text-align:center;cursor:pointer;padding:6px 3px;border-radius:8px;transition:all .15s}
-.sc:hover{background:rgba(0,255,100,.1);transform:translateY(-2px);box-shadow:0 0 20px rgba(0,255,100,.2)}
-.ic{width:44px;height:44px;margin:0 auto 5px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#050508;box-shadow:0 0 12px currentColor;border:1px solid rgba(255,255,255,.12)}
-.lb{font-size:10px;font-weight:500;color:#aaa;text-shadow:0 0 6px #000;line-height:1.15}
-#bar{height:42px;background:rgba(8,8,12,.95);border-top:1px solid rgba(0,255,100,.2);display:flex;align-items:center;justify-content:space-between;padding:0 12px}
-#startBtn{height:30px;padding:0 14px;background:linear-gradient(135deg,rgba(0,255,100,.15),rgba(0,150,255,.1));border:1px solid #00ff64;border-radius:5px;color:#00ff64;font-weight:600;font-size:13px;cursor:pointer;font-family:Consolas,monospace}
-#startBtn:hover{background:#00ff64;color:#000;box-shadow:0 0 18px #00ff64}
-#clock{font-size:13px;color:#00ff64}
-#status{position:absolute;bottom:52px;left:12px;background:#000;color:#00ff64;padding:7px 12px;font-size:12px;font-family:Consolas,monospace;border:1px solid #00ff64;border-radius:5px;display:none;z-index:999}
-#menu{position:absolute;bottom:48px;left:8px;width:280px;background:rgba(8,8,12,.97);border:1px solid rgba(0,255,100,.25);border-radius:8px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 0 35px rgba(0,255,100,.15)}
-.mi{padding:8px 14px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#ccc;font-family:Consolas,monospace}
-.mi:hover{background:rgba(0,255,100,.1);color:#00ff64}
-.mi i{width:20px;height:20px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#000}
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,100,.3),transparent);margin:4px 0}
-#credit{position:absolute;bottom:48px;right:12px;font-size:10px;color:rgba(0,255,100,.4)}
+.sc{width:92px;text-align:center;cursor:pointer;padding:6px 3px;border-radius:10px;transition:all .18s}
+.sc:hover{background:rgba(0,255,255,.1);transform:translateY(-3px);box-shadow:0 0 25px rgba(0,255,255,.25)}
+.ic{width:44px;height:44px;margin:0 auto 5px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#030308;box-shadow:0 0 14px currentColor,0 4px 10px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15)}
+.lb{font-size:10px;font-weight:500;color:#bbb;text-shadow:0 0 8px #000;line-height:1.15}
+#bar{height:44px;background:rgba(5,5,12,.95);border-top:1px solid rgba(0,255,255,.25);display:flex;align-items:center;justify-content:space-between;padding:0 14px;box-shadow:0 -5px 25px rgba(0,255,255,.1)}
+#startBtn{height:32px;padding:0 16px;background:linear-gradient(135deg,rgba(0,255,255,.2),rgba(255,0,255,.15));border:1px solid #0ff;border-radius:6px;color:#0ff;font-weight:600;font-size:13px;cursor:pointer;font-family:Consolas,monospace;transition:all .15s}
+#startBtn:hover{background:linear-gradient(135deg,#0ff,#f0f);color:#000;box-shadow:0 0 22px #0ff}
+#clock{font-size:13px;color:#0ff;letter-spacing:1px}
+#status{position:absolute;bottom:56px;left:14px;background:#000;color:#0f0;padding:8px 14px;font-size:12px;font-family:Consolas,monospace;border:1px solid #0f0;border-radius:6px;display:none;z-index:999;box-shadow:0 0 15px rgba(0,255,0,.3)}
+#menu{position:absolute;bottom:50px;left:10px;width:290px;background:rgba(5,5,12,.97);border:1px solid rgba(0,255,255,.3);border-radius:10px;display:none;flex-direction:column;z-index:200;max-height:75vh;overflow-y:auto;box-shadow:0 0 40px rgba(0,255,255,.2)}
+.mi{padding:9px 15px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:11px;color:#ccc;font-family:Consolas,monospace;transition:all .1s}
+.mi:hover{background:rgba(0,255,255,.12);color:#0ff}
+.mi i{width:22px;height:22px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#000}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#0ff,transparent);margin:5px 0}
+#credit{position:absolute;bottom:52px;right:14px;font-size:11px;color:rgba(0,255,255,.45)}
 </style>
 </head>
 <body>
@@ -65,6 +69,23 @@ const juegos = [
   {id:'freerider3',n:'Free Rider 3',c:'#8bc34a',l:'FR'},
   {id:'hanger2',n:'Hanger 2',c:'#607d8b',l:'HG'},
   {id:'johnnytrigger',n:'Johnny Trigger',c:'#e91e63',l:'JT'},
+
+  // === NUEVOS AGREGADOS ===
+  {id:'stickarchersbattle',n:'Stick Archers',c:'#ff7043',l:'SA'},
+  {id:'stickfighter',n:'Stick Fighter',c:'#ff5722',l:'SF'},
+  {id:'stickmerge',n:'Stick Merge',c:'#e64a19',l:'SM'},
+  {id:'superliquidsoccer',n:'Liquid Soccer',c:'#26a69a',l:'LS'},
+  {id:'tabletennisworldtour',n:'Table Tennis',c:'#42a5f5',l:'TT'},
+  {id:'territorialio',n:'Territorial.io',c:'#7e57c2',l:'TO'},
+  {id:'thisistheonlylevel',n:'Only Level',c:'#ab47bc',l:'OL'},
+  {id:'blockysnakes',n:'Blocky Snakes',c:'#66bb6a',l:'BS'},
+  {id:'bubbleshooter',n:'Bubble Shooter',c:'#29b6f6',l:'BU'},
+  {id:'capybaraclicker',n:'Capybara',c:'#8d6e63',l:'CP'},
+  {id:'choppyorc',n:'Choppy Orc',c:'#ef5350',l:'CO'},
+  {id:'clashofvikings',n:'Clash Vikings',c:'#5c6bc0',l:'CV'},
+  {id:'fancypantsadventure',n:'Fancy Pants',c:'#ec407a',l:'FP'},
+  {id:'googlebaseball',n:'Google Baseball',c:'#42a5f5',l:'GB'},
+  {id:'speedstars',n:'Speed Stars',c:'#ffa726',l:'SS'},
 
   // === POPULARES ===
   {id:'geometrydash',n:'Geometry Dash',c:'#00e676',l:'GD'},
